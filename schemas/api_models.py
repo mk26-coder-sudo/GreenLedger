@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import Dict, List
 
 class Zone(BaseModel):
     id: int
@@ -19,3 +19,13 @@ class OptimizedZone(BaseModel):
 class OptimizeResponse(BaseModel):
     zones: List[OptimizedZone]
     saplings_left: int
+
+class PlantRequest(BaseModel):
+    allocation: Dict[int, int]
+
+
+class PlantResponse(BaseModel):
+    message: str
+    before: dict
+    after: dict
+    impact: Dict[int, float]
