@@ -32,19 +32,27 @@ def get_zones():
 def get_optimized_zones(k: int = 3):
     temp_zones = deepcopy(zones)
 
-    selected = optimize_zones(graph, temp_zones, k)
+    result = optimize_zones(graph, temp_zones, k)
 
-    result = []
+    selected = result["selected_zones"]
+    allocation = result["allocation"]
+
+    response = []
+
     for z in selected:
-        result.append(
+        response.append(
             OptimizedZone(
                 id=z,
                 name=temp_zones[z]["name"],
-                score=round(temp_zones[z]["score"], 2)
+                score=round(temp_zones[z]["score"], 2),
+                saplings=allocation.get(z, 0)   # IMPORTANT FIX
             )
         )
 
-    return {"zones": result}
+    return {
+        "zones": response,
+        "saplings_left": result["saplings_left"]
+    }
 @app.get("/")
-def home():
-    return {"message": "Welcome to GreenLedger API"}
+def root():
+    return {"message": "Welcome to the GreenLedger API!"}

@@ -14,6 +14,8 @@ class OptimizedZone(BaseModel):
     id: int
     name: str
     score: float
+    saplings: int
 
 class OptimizeResponse(BaseModel):
     zones: List[OptimizedZone]
+    saplings_left: int
