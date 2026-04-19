@@ -11,7 +11,7 @@ def build_graph():
     # 1. ADJACENCY EDGES
     # ----------------------------
     for zone_id, data in zones.items():
-        for neighbor in data["neighbors"]:
+        for neighbor in data.get("neighbors", []):
             graph[zone_id].append((neighbor, 1.0, "adj"))
 
             # reverse edge (avoid duplicates)
@@ -33,3 +33,4 @@ def build_graph():
             graph[zone_id].append((drain_target, 0.6, "drain"))
 
     return graph
+

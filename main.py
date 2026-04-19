@@ -6,6 +6,7 @@ from services.graph_service import build_graph
 from services.score_service import get_max_values, calculate_score
 from services.optimizer_service import optimize_zones
 from services.plant_service import plant_trees
+from utils.validator import validate_zones
 
 from schemas.api_models import (
     PlantRequest,
@@ -19,12 +20,13 @@ app = FastAPI(title="GreenLedger API")
 # -------------------------------
 # INITIAL SETUP (runs once)
 # -------------------------------
+
+validate_zones(zones)
 graph = build_graph()
 
-max_pop, max_heat = get_max_values()
+from services.score_service import apply_scores
 
-for zone_id, zone in zones.items():
-    zone["score"] = calculate_score(zone, max_pop, max_heat)
+apply_scores(zones)
 
 
 # -------------------------------

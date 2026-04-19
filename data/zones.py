@@ -184,7 +184,8 @@ zones = {
         "heat": 1.8,
         "flood_risk": 2,
         "neighbors": [27],
-        "wind_out": [27, 12],        # highest elevation, clean wind source for entire west
-        "drain_to": [27]             # hill runoff drains into Kothrud
+        "wind_out": [27, 12],
+        "drain_to": [27]   # hill runoff drains into Kothrud
+            
     }
 }
