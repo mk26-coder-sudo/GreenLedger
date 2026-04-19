@@ -15,6 +15,7 @@ class OptimizedZone(BaseModel):
     name: str
     score: float
     saplings: int
+    species: dict
 
 class OptimizeResponse(BaseModel):
     zones: List[OptimizedZone]

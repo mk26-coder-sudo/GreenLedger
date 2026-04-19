@@ -7,6 +7,7 @@ from services.score_service import get_max_values, calculate_score
 from services.optimizer_service import optimize_zones
 from services.plant_service import plant_trees
 from utils.validator import validate_zones
+from services.species_service import get_species_mix
 
 from schemas.api_models import (
     PlantRequest,
@@ -55,7 +56,8 @@ def get_optimized_zones(k: int = 3):
             id=z,
             name=temp_zones[z]["name"],
             score=round(temp_zones[z]["score"], 2),
-            saplings=allocation.get(z, 0)
+            saplings=allocation.get(z, 0),
+            species=get_species_mix(temp_zones[z],allocation.get(z, 0))
         )
         for z in selected
     ]
