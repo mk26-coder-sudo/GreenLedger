@@ -63,3 +63,7 @@ uvicorn main:app --reload
 * `GET /zones` → Get all zones
 * `GET /optimize?k=3` → Get best zones + allocation
 * `POST /plant` → Apply plantation and see impact
+
+🔗 Link to GreenLedger Demo:
+https://drive.google.com/file/d/1jwM0caK2I57kTFN-bEn-76uoRKu8M8sb/view?usp=sharing
+
